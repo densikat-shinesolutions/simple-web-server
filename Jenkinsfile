@@ -4,9 +4,20 @@ pipeline {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
   tools {
-    nodejs 'node'
+    go 'go1129'
   }
   stages {
+    stage('go build'){
+      steps{
+        script {
+            sh 'go version'
+            sh 'go get -d github.com/gorilla/mux'
+            sh 'go get -d github.com/prometheus/client_golang/prometheus'
+            sh 'go get -d github.com/prometheus/client_golang/prometheus/promhttp'
+            sh 'go build -a -installsuffix cgo --ldflags "-s -w" -o server'
+        }
+      }
+    }
     stage('docker build'){
       steps{
         script {
