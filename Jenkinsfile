@@ -14,7 +14,7 @@ pipeline {
             sh 'go get -d github.com/gorilla/mux'
             sh 'go get -d github.com/prometheus/client_golang/prometheus'
             sh 'go get -d github.com/prometheus/client_golang/prometheus/promhttp'
-            sh 'go build -a -installsuffix cgo --ldflags "-s -w" -o server'
+            sh 'export CGO_ENABLED=0 && go build -a -installsuffix cgo --ldflags "-s -w" -o server'
         }
       }
     }
