@@ -29,7 +29,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry('https://registry.hub.docker.com', '822d4685-d1fe-4628-a373-84744cdb8327') {
-            docker.image('portabledave/simple-web-server').push('new')
+            docker.image('portabledave/simple-web-server').push('new2')
           }
         }
       }
