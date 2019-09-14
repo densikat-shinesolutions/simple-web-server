@@ -29,7 +29,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry('https://registry.hub.docker.com', 'densikatdockerhub') {
-            docker.image('densikatshine/simple-web-server').push('latest')
+            docker.image('densikatshine/simple-web-server').push('new')
           }
         }
       }
