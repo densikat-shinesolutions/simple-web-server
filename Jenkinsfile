@@ -28,8 +28,8 @@ pipeline {
     stage('docker push'){
       steps{
         script {
-          docker.withRegistry('https://registry.hub.docker.com', 'densikatdockerhub') {
-            docker.image('densikatshine/simple-web-server').push('badcanary')
+          docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+            docker.image('densikatshine/simple-web-server').push('latest')
           }
         }
       }
