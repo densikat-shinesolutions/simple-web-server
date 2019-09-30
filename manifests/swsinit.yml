@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-web-server
+  namespace: spinnaker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-web-server
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: '8080'
+        prometheus.io/scrape: 'true'
+      labels:
+        app: simple-web-server
+    spec:
+      containers:
+        - env:
+            - name: Release
+              value: Production
+          image: 'densikatshine/simple-web-server:latest'
+          name: simple-web-server
+          ports:
+            - containerPort: 8080
+
