@@ -21,7 +21,7 @@ pipeline {
     stage('docker build'){
       steps{
         script {
-          docker.build('densikatshine/simple-web-server')
+          docker.build('nhannguyensy/simple-web-server')
         }
       }
     }
@@ -29,7 +29,7 @@ pipeline {
       steps{
         script {
           docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            docker.image('densikatshine/simple-web-server').push('badconfig')
+            docker.image('nhannguyensy/simple-web-server').push('badconfig')
           }
         }
       }
